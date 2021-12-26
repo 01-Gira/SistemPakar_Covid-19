@@ -84,7 +84,11 @@ def result():
              session['gejalaPasien'] = 9
              session['logs'] = 1
              return redirect(url_for('diagnosa'))
-          elif session['gejalaPasien'] == 9 and session['logs'] == 1:
+          elif session['gejalaPasien'] == 9:
+             session['gejalaPasien'] = 10
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 10 and session['logs'] == 1:
                terjangkitVarian = daftarVarian[1]
                return render_template("result.html", terjangkitVarian=terjangkitVarian, awal = url_for('index'))
         
