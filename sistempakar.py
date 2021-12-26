@@ -41,7 +41,7 @@ def welcome():
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
    if request.method == 'POST':
-      #=============================================================Logs 0
+      #=============================================================Varian Alpha 
       if session['logs'] == 0 and checkGejala():
          if session['gejalaPasien'] == 0: # Gejala 1
             session['gejalaPasien'] = 1
@@ -78,21 +78,57 @@ def result():
          elif session['gejalaPasien'] == 8 and session['logs']==0:
               terjangkitVarian = daftarVarian[0]
               return render_template("result.html", terjangkitVarian = terjangkitVarian, awal = url_for('index'))
-      #=============================================================Logs 1
+      #=============================================================Varian Beta
       else :
           if session['gejalaPasien'] == 1 and session['logs']==0:
+             session['gejalaPasien'] = 2
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 2:
+             session['gejalaPasien'] = 3
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 3:
+             session['gejalaPasien'] = 4
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 4:
+             session['gejalaPasien'] = 5
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 5:
+             session['gejalaPasien'] = 6
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 6:
+             session['gejalaPasien'] = 7
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 7:
+             session['gejalaPasien'] = 8
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 8:
              session['gejalaPasien'] = 9
              session['logs'] = 1
              return redirect(url_for('diagnosa'))
-          elif session['gejalaPasien'] == 9:
+          if session['gejalaPasien'] == 9:
              session['gejalaPasien'] = 10
              session['logs'] = 1
              return redirect(url_for('diagnosa'))
-          elif session['gejalaPasien'] == 10 and session['logs'] == 1:
+          if session['gejalaPasien'] == 10:
+             session['gejalaPasien'] = 25
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          if session['gejalaPasien'] == 25:
+             session['gejalaPasien'] = 26
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 26 and session['logs'] == 1:
                terjangkitVarian = daftarVarian[1]
                return render_template("result.html", terjangkitVarian=terjangkitVarian, awal = url_for('index'))
-        
-
+     #==============================================================Logs 2
+     
 @app.route('/diagnosa',methods = ['POST', 'GET'])
 def diagnosa():
    name = session['namaPasien']
