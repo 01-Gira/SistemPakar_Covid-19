@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}Hasil Test{% endblock %} {% block
+content %}
+<section id="hasilTest" class="hasilTest">
+  <div class="container" data-aos="fade-up">
+    <div class="content">
+      <header class="section-header">
+        <h1>Hasil Test</h1>
+        <p>
+          Hasil dari test yang anda ambil, kami menyatakan anda mendapatkan
+          varian
+        </p>
+      </header>
+      <div class="row-center">
+        <div class="lg-6">
+          <h1>{{ terjangkitVarian }}</h1>
+          <a href="{{ awal }}"><span class="arrow"></span>Kembali ke awal</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %}Mulai{% endblock %} {% block
+content%}
+<!-- diagnosa -->
+<section id="diagnosa" class="diagnosa">
+  <div class="container" data-aos="fade-up">
+    <div class="content">
+      <header class="section-header">
+        <h1>Diagnosa untuk: {{ name }}</h1>
+        <h2>Apakah anda {{ pertanyaan }}?</h2>
+      </header>
+      <div class="row-center">
+        <div class="col-lg-3 ml-auto">
+          <form action="{{ link }}result" method="post" class="text-center">
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                id="iya"
+                name="pilihan"
+                value="ya"
+                class="radio-diagnosa"
+                required
+              />
+              <label for="iya">Iya</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                id="tidak"
+                name="pilihan"
+                value="tidak"
+                class="radio-diagnosa"
+                required
+              />
+              <label for="tidak">Tidak</label>
+            </div>
+            <button type="submit" value="submit" class="btn btn-primary">
+              Selanjutnya
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
+{% endblock %}
