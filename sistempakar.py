@@ -1,3 +1,4 @@
+from re import I
 from flask import Flask, session, redirect, url_for, render_template, request, escape
 app = Flask(__name__)
 app.secret_key = 'isinya password buat session'
@@ -78,19 +79,15 @@ def result():
               terjangkitVarian = daftarVarian[0]
               return render_template("result.html", terjangkitVarian = terjangkitVarian, awal = url_for('index'))
       #=============================================================Logs 1
-      elif session['logs'] == 0 and checkGejala():
-         if session['gejalaPasien'] == 8: # Gejala 1
-            session['gejalaPasien'] = 9
-            session['logs'] = 1
-            return redirect(url_for('diagnosa'))
-         elif session['gejalaPasien'] == 9:
-              session['gejalaPasien'] = 10
-              session['logs'] = 1
-              return redirect(url_for('diagnosa'))
-         elif session['logs'] == 1 and session['gejalaPasien'] == 0 and 9:
-              terjangkitVarian = daftarVarian[1]
-              return render_template("result.html", terjangkitVarian = terjangkitVarian, awal = url_for('index'))
-     
+      else :
+          if session['gejalaPasien'] == 1 and session['logs']==0:
+             session['gejalaPasien'] = 9
+             session['logs'] = 1
+             return redirect(url_for('diagnosa'))
+          elif session['gejalaPasien'] == 9 and session['logs'] == 1:
+               terjangkitVarian = daftarVarian[1]
+               return render_template("result.html", terjangkitVarian=terjangkitVarian, awal = url_for('index'))
+        
 
 @app.route('/diagnosa',methods = ['POST', 'GET'])
 def diagnosa():
